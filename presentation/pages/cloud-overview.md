@@ -108,8 +108,3 @@ On top of that k8s is using a
   and deploy the changes automaticly with a CI/CD pipeline or on which platform you want to deploy it.
 </div>
 
-<!--<Excalidraw-->
-<!--  drawFilePath="./example.excalidraw.json"-->
-<!--  class="w-[600px]"-->
-<!--  :darkMode="false"-->
-<!--  :background="false"-->

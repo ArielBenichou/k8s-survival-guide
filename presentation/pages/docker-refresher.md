@@ -21,11 +21,29 @@ Build your app with `docker build . -t my-app`
 
 Run a container with the same image and expose the port 3000: `docker run -p 3000:3000 my-app`
 
+If the image does not exist on your local machine it will be pull from the dockerhub registery.
+
+<img src="https://1000logos.net/wp-content/uploads/2021/11/Docker-Logo-2013.png" class="h-40 mx-auto"
+/>
+
 ::right::
 
+Here an example `Dockerfile` that build a Node.js Server.
 ```{*}{lines:true,startLine:0}
 # Dockerfile
-FROM node
+FROM node:20-alpine
 
-CMD ["a", "b"]
+WORKDIR /app
+
+COPY . .
+
+RUN npm ci && \
+    npm run build && \
+    npm prune --production
+
+
+EXPOSE 3000
+
+CMD ["node", "/app/dist/index.js"]
+
 ```

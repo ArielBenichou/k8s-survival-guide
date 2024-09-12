@@ -1,5 +1,5 @@
 
-# TODO
+# TODO - Draft
 
 - Modern Overview of Cloud Infrastructure
   (What is the problem we trying to solve?)
@@ -16,15 +16,22 @@
   - ofcourse, there is more than load balancing and networking that k8s give you in a cloud agnostic way, also secret configuration, and ____.
   - k8s is also extensible and pluggable and you can find thrid party service and tools that you can easily integrate into you k8s cluster. 
 - Docker Refrehser?
+
 - K8s Basic (https://www.cncf.io/wp-content/uploads/2020/08/Phippy-Goes-To-The-Zoo.pdf)
-  - Nodes, Workers & ControlPlane
-  - Pods
-  - Secrets
-  - ReplicaSets, Deployments, DaemonSets
-  - Ingress
-  - CronJobs
-  - CRD
-  - Services
-  - Storage
+  - [x] Nodes, Workers & ControlPlane
+  - [ ] Namespace
+  - [ ] Pods
+  - [ ] Secrets
+  - [ ] ReplicaSets, Deployments, DaemonSets
+  - [ ] Ingress
+  - [ ] CronJobs
+  - [ ] Services
+  - [ ] Storage
+  - [ ] CRD
 - MiniKube Installation
 - create a demo node js app and react frontend
+  - create manifest to deploy them
+- how to ssh into a pod and run a command
+- see logs of a pod
+- hot load code into a dev container/pod (use thrid party?)
+- kustomization?

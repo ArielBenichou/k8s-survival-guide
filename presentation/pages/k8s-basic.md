@@ -8,11 +8,55 @@ class: text-center
 
 What it does and how it works?
 
+
 ---
 level: 2
 ---
 
 # Kubernetes Architecture
 
-Suppose we have a Node.js server, we want to deploy.
+K8s is an abstraction over hardware.
 
+If you would to create manually (i.e. without a cloud provider or a minikube) a kubernetes cluster - it will take a lot of work and knowledge!
+
+Kubernetes by itself doesn't know which storage device or load balancer he need to create when asked.
+
+**You need to configure k8s with lots of tools**
+
+But luckily each cloud provider have a ready k8s integration with their services.
+
+<Excalidraw
+  drawFilePath="/drawings/k8s-archi.excalidraw"
+  class="w-[600px]"
+  :darkMode="false"
+  :background="true" />
+
+---
+level: 2
+layout: two-cols-header
+---
+
+# Nodes
+
+We have Worker nodes and Master nodes.
+
+::left::
+
+### Master Node
+The **Control Plane** is made off of master nodes and are responsable for: high availability, recovery from worker node failures, respond to increased demand for a pod, etc.
+
+`kubectl` in fact send its commands to the Control Plane.
+
+Without a fully functioning control plane, a cluster cannot make any changes to its current state, i.e. no new pods can be scheduled.
+
+In a prod environment we will usually have 3 master nodes. [(read why)](https://www.siderolabs.com/blog/why-should-a-kubernetes-control-plane-be-three-nodes/) 
+
+::right::
+
+### Worker Node
+
+Worker nodes are where our resources are deployed to.
+
+We should look at the ensamble of all those nodes as a pool of resources.
+
+We should declare what resources (e.g. server, frontend app, etc...) need to be deployed and how much of them we need, Kubernetes will handle where and when to deploy them.

@@ -53,3 +53,7 @@ src: ./pages/docker-refresher.md
 src: ./pages/k8s-basic.md
 ---
 
+---
+src: ./pages/mini-kube.md
+---
+

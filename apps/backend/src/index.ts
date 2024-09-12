@@ -1,40 +1,45 @@
-import { serve } from '@hono/node-server'
-import { randomUUID } from 'crypto'
-import { Hono } from 'hono'
+import { serve } from "@hono/node-server";
+import { randomInt } from "crypto";
+import { Hono } from "hono";
+import { logger } from "hono/logger";
+import { petsRouter } from "./modules/pets/pets.router";
 
-const app = new Hono()
-const randomId = randomUUID();
+const app = new Hono();
+const randomId = randomInt(100);
+const startDate = new Date().toISOString();
+app.use(logger());
 
-// Endpoint to demonstrate loadbalancing
-app.get('/', (c) => {
+// Endpoint to demonstrate load balancing /w id
+app.get("/", (c) => {
   return c.json({
     id: randomId,
-    name: "Hono.js Server",
-    date: new Date().toISOString(),
-  })
-})
+    name: "Petworx",
+    description: "Galactic Pet Shelter Management System",
+    startDate,
+    version: process.env.VERSION ?? "none",
+  });
+});
 
-// Endpoint to demonstrate failure
-app.get('/fail', (c) => {
-  throw new Error('Simulated Failure')
-})
+app.route("/pets", petsRouter);
 
-// Endpoint to show configuration
-app.get('/config', (c) => {
-  const config = process.env.MY_CONFIG || 'Default Config'
-  return c.json({ config })
-})
+// Route to crash the app
+app.post("/crash", () => {
+  console.log("Crashing the application...");
+  process.exit(1);
+});
 
-// Endpoint to demonstrate secrets
-app.get('/secrets', (c) => {
-  const secret = process.env.MY_SECRET || 'No Secret Found'
-  return c.json({ secret })
-})
+app.onError((err, c) => {
+  console.error(`${err}`);
+  return c.json({ error: "Internal Server Error" }, 500);
+});
 
-const port = 3000
-console.log(`Server is running on port ${port}`)
-
-serve({
-  fetch: app.fetch,
-  port
-})
+const port = 3000;
+serve(
+  {
+    fetch: app.fetch,
+    port,
+  },
+  () => {
+    console.log(`Server is running on port ${port}`);
+  },
+);

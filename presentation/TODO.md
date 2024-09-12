@@ -30,6 +30,9 @@
   - [ ] CRD
 - MiniKube Installation
 - create a demo node js app and react frontend
+  - SqlLite container /w volume
+  - vite react app frontend
+  - hono.js backend
   - create manifest to deploy them
 - how to ssh into a pod and run a command
 - see logs of a pod

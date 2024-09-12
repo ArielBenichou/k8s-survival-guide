@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: petworx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: petworx-backend
+        image: arielbenichou/petworx-backend:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: VERSION
+          value: v1.0.0
+        - name: DB_HOST
+          value: "mariadb" # The service name for MariaDB in Kubernetes
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mariadb-secret
+              key: user-password
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: mariadb-config
+              key: mariadb-database
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              name: mariadb-config
+              key: mariadb-user

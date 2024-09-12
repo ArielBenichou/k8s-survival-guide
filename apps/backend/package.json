@@ -1,19 +1,29 @@
 {
-  "name": "backend",
+  "name": "@petworx/backend",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc",
-    "build:docker": "docker build . -t arielbenichou/backend",
-    "start:docker": "docker run --rm -p 3000:3000 arielbenichou/backend",
-    "push:docker": "docker image push arielbenichou/backend"
+    "clean": "rm -rf dist",
+    "build": "pnpm run clean && tsup",
+    "build:docker": "docker build . -t arielbenichou/petworx-backend",
+    "prestart:docker": "pnpm run build:docker",
+    "start": "node dist/index.js",
+    "start:docker": "docker run --rm -f -p 3000:3000 arielbenichou/petworx-backend",
+    "prepush:docker": "pnpm run build:docker",
+    "push:docker": "docker image push arielbenichou/petworx-backend",
+    "format": "prettier --write src/**/* scripts/**/*"
   },
   "type": "module",
   "dependencies": {
     "@hono/node-server": "^1.12.2",
-    "hono": "^4.6.1"
+    "@hono/zod-validator": "^0.2.2",
+    "hono": "^4.6.1",
+    "mariadb": "^3.3.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
+    "prettier": "^3.3.3",
+    "tsup": "^8.2.4",
     "tsx": "^4.7.1",
     "typescript": "^5.6.2"
   },

@@ -93,5 +93,5 @@ kubectl apply -f ./pod.yaml
 # deploy all yaml file
 kubectl apply -f ./*.yaml
 # prune everthing and deploy a resource (Hard Sync)
-kubectl apply -f --prune ./pod.yaml
+kubectl apply -f -R --prune --all folder-name
 ```

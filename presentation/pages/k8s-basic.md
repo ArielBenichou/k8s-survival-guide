@@ -60,3 +60,12 @@ Worker nodes are where our resources are deployed to.
 We should look at the ensamble of all those nodes as a pool of resources.
 
 We should declare what resources (e.g. server, frontend app, etc...) need to be deployed and how much of them we need, Kubernetes will handle where and when to deploy them.
+
+
+---
+level: 2
+---
+
+# Secrets
+
+use `echo -n "your-password" | base64`

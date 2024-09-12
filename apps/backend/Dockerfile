@@ -9,7 +9,7 @@ FROM base AS builder
 RUN apk add --no-cache gcompat
 WORKDIR /app
 
-COPY package*json pnpm-lock.yaml tsconfig.json src ./
+COPY . .
 
 # RUN pnpm fetch --prod
 RUN pnpm install --frozen-lockfile && \
@@ -24,6 +24,7 @@ RUN adduser --system --uid 1001 hono
 
 COPY --from=builder --chown=hono:nodejs /app/node_modules /app/node_modules
 COPY --from=builder --chown=hono:nodejs /app/dist /app/dist
+COPY --from=builder --chown=hono:nodejs /app/scripts /app/scripts
 COPY --from=builder --chown=hono:nodejs /app/package.json /app/package.json
 
 USER hono

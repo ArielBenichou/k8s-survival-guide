@@ -1,0 +1,1 @@
+{"root":["./src/main.tsx","./src/vite-env.d.ts","./src/components/pet-card.tsx","./src/components/query-container.tsx","./src/pages/create-pet.page.tsx","./src/pages/home.page.tsx","./src/pages/root.layout.tsx","./src/services/api.ts","./src/types/pets.type.ts"],"version":"5.6.2"}

@@ -6,8 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:docker": "docker build . -t arielbenichou/petworx-frontend",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "start": "vite preview --host --port 3000",
+    "start:docker": "docker run --rm -p 3000:3000 arielbenichou/petworx-frontend",
+    "prepush:docker": "pnpm run build:docker",
+    "push:docker": "docker image push arielbenichou/petworx-frontend"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.56.2",

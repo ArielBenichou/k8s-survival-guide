@@ -16,6 +16,7 @@ spec:
       containers:
       - name: petworx-backend
         image: arielbenichou/petworx-backend:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
         env:

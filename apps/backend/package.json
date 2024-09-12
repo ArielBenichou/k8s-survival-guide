@@ -7,7 +7,7 @@
     "build:docker": "docker build . -t arielbenichou/petworx-backend",
     "prestart:docker": "pnpm run build:docker",
     "start": "node dist/index.js",
-    "start:docker": "docker run --rm -f -p 3000:3000 arielbenichou/petworx-backend",
+    "start:docker": "docker run --rm -p 3000:3000 arielbenichou/petworx-backend",
     "prepush:docker": "pnpm run build:docker",
     "push:docker": "docker image push arielbenichou/petworx-backend",
     "format": "prettier --write src/**/* scripts/**/*"

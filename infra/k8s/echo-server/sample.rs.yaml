@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: echo-server-rs
+  labels:
+    app: echo-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: echo-server-app
+  template:
+    metadata:
+      name: my-echo-server
+      labels:
+        app: echo-server-app
+    spec:
+      containers:
+        - name: echo-server-container
+          image: 'kicbase/echo-server:1.0'
+          ports:
+            - containerPort: 8080

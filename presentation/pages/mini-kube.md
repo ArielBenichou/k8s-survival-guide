@@ -16,6 +16,7 @@ Let's start kubing.
 
 ---
 level: 2
+hideInToc: true
 ---
 
 # Setup Tools
@@ -51,6 +52,7 @@ Even though we will use the terminal to issue commands, you can open the k8s das
 
 ---
 level: 2
+hideInToc: true
 ---
 
 # Our First Pod
@@ -82,6 +84,7 @@ You can also `curl localhost:63263` and get the same echo response.
 
 ---
 level: 2
+hideInToc: true
 ---
 
 # Deploy YAML Manifest
@@ -94,4 +97,67 @@ kubectl apply -f ./pod.yaml
 kubectl apply -f ./*.yaml
 # prune everthing and deploy a resource (Hard Sync)
 kubectl apply -f -R --prune --all folder-name
+```
+
+<br />
+
+### Delete Resources
+
+You can delete the resources you've created with the `apply` command: 
+```sh
+kubectl delete -f ./pod.yaml
+```
+
+---
+level: 2
+hideInToc: true
+---
+
+# SSH into a Pod
+
+Find the pod name you want to open a shell in, and run `kubectl exec` command:
+```sh
+# find your pod name with this
+kubectl get pod | grep my-pod
+# then use the name you found to open a shell within
+kubectl exec --stdin --tty my-pod -- /bin/sh
+```
+
+---
+level: 2
+hideInToc: true
+---
+
+# Port-Forward
+You can port-forward a container with this command:
+```sh
+kubectl port-forward TYPE/NAME [options] [LOCAL_PORT:]REMOTE_PORT
+# example, will expose 'backend' to localhost:3000 from the 'networx' namespace
+kubectl port-forward deployment/backend -n=networx 3000:8080
+```
+
+---
+level: 2
+hideInToc: true
+---
+
+# View Logs
+
+Find the pod name you want to see the logs of, and run `kubectl logs` command:
+```sh
+# find your pod name with this
+kubectl get pod | grep my-pod
+# then use the name you found to open a shell within
+kubectl logs my-pod
+# to keep streaming use -f
+kubectl logs my-pod -f
+```
+You can also filter by metadata label with `-l key=value`:
+```sh
+kubectl logs -l app=backend --all-containers
+```
+
+Or try by other resources, e.g. deployments:
+```sh
+kubectl logs deployment/backend --all-containers
 ```

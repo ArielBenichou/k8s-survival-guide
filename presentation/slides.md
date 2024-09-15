@@ -39,7 +39,7 @@ hideInToc: true
 
 # Table of Content
 
-<Toc minDepth="1" maxDepth="1"></Toc>
+<Toc minDepth="1" maxDepth="2" columns="2"></Toc>
 
 ---
 src: ./pages/cloud-overview.md
@@ -56,4 +56,14 @@ src: ./pages/k8s-basic.md
 ---
 src: ./pages/mini-kube.md
 ---
+
+
+---
+layout: cover
+background: https://images.unsplash.com/photo-1416273567255-8abe875affcd?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+---
+
+# Live Demo!
+
+Ok, now let's see an example application called Petworx - a Galactic Pet Shelter Management System.
 

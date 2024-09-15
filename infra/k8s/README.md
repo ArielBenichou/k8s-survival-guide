@@ -22,6 +22,8 @@ kubectl port-forward deployment/backend 8080:3000 -n=petworx
 kubectl port-forward deployment/frontend 3000:3000 -n=petworx
 ```
 
+Even better you can run `minikube tunnel` to expose the load balanced service!
+
 # Stop
 quit both terminal with port-forwards
 run the `delete.sh` to delete all the resources

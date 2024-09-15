@@ -10,6 +10,7 @@ Why on Earth do I need Kubernetes?
 
 ---
 level: 2
+hideInToc: true
 ---
 
 # Let's Begin with a Server
@@ -46,6 +47,7 @@ That's better. (we have even better tools, but I digress)
 
 ---
 level: 2
+hideInToc: true
 ---
 # We missing some key features
 
@@ -63,6 +65,7 @@ Ok, so we have a Node.js server deployed, but we missing some important producti
 
 ---
 level: 2
+hideInToc: true
 ---
 
 # ...and scaling
@@ -80,6 +83,7 @@ We also need our Node.js server up and running at all time:
 
 ---
 level: 2
+hideInToc: true
 ---
 # So Why Kubernetes?
 

@@ -1,0 +1,28 @@
+{
+  "name": "echo-server",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "clean": "rm -rf dist",
+    "build": "pnpm run clean && tsup",
+    "build:docker": "docker build . -t arielbenichou/echo-server:$TAG",
+    "prestart:docker": "pnpm run build:docker",
+    "start": "node dist/index.js",
+    "start:docker": "docker run --rm -p 3000:3000 arielbenichou/echo-server:$TAG",
+    "prepush:docker": "pnpm run build:docker",
+    "push:docker": "docker image push arielbenichou/echo-server:$TAG",
+    "format": "prettier --write src/**/* scripts/**/*"
+  },
+  "type": "module",
+  "dependencies": {
+    "@hono/node-server": "^1.12.2",
+    "hono": "^4.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "prettier": "^3.3.3",
+    "tsup": "^8.2.4",
+    "tsx": "^4.7.1",
+    "typescript": "^5.6.2"
+  },
+  "packageManager": "pnpm@9.10.0"
+}

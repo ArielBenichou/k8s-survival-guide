@@ -11,6 +11,7 @@ Shoo a da Container?
 ---
 level: 2
 layout: two-cols
+hideInToc: true
 ---
 
 # A Simple Example

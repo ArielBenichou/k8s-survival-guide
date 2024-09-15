@@ -87,6 +87,26 @@ level: 2
 hideInToc: true
 ---
 
+# Hands-on
+Let's Deploy an Echo Server.
+
+<v-clicks>
+
+1. Now you need to create a **Deployment** manifest that will deploy 3 replicas of the `arielbenichou/echo-server:v1` image.
+2. Create a **Service** of type _LoadBalancer_ for this Deployment.
+3. Use `minikube tunnel` to expose this load balencer.
+4. Use `curl` or Postman, to call the Echo Server.
+5. Update the Deployment manifest image to `arielbenichou/echo-server:v2`. Then call the Echo Server again, make sure you get `"version": "v2"`.
+6. Rollback to the previous version.
+8. Cleanup & Delete Resources.
+
+</v-clicks>
+
+---
+level: 2
+hideInToc: true
+---
+
 # Deploy YAML Manifest
 
 We will mainly use the `apply` command to deploy yaml manifests.

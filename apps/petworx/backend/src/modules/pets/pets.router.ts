@@ -52,7 +52,7 @@ petsRouter.get("/", async (c) => {
   let conn;
   try {
     conn = await pool.getConnection();
-    const pets = await conn.query("SELECT * FROM pets");
+    const pets = await conn.query("SELECT * FROM pets ORDER BY name");
     return c.json(pets);
   } catch (err) {
     console.error(err);

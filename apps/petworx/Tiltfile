@@ -1,0 +1,7 @@
+k8s_yaml(['./k8s/backend/backend.deployment.yaml','./k8s/frontend/frontend.deployment.yaml'])
+
+docker_build('arielbenichou/petworx-backend', './backend/')
+docker_build('arielbenichou/petworx-frontend', './frontend/')
+
+k8s_resource('backend', port_forwards='8080:3000')
+k8s_resource('frontend', port_forwards='3000:3000')

@@ -18,7 +18,7 @@ export default function PetCard({ pet }: Props) {
 
   return (
     <div className="flex rounded-lg overflow-hidden shadow-md">
-      <img src={`https://robohash.org/${pet.id}?set=set2`} className="bg-gray-100 h-52 w-52" />
+      <img src={`https://robohash.org/${pet.id}?set=set2`} className="bg-gray-100 object-cover w-52" />
       <div className="flex flex-col gap-2 p-4">
 
         <div className="flex flex-col w-36">
